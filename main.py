@@ -3,7 +3,7 @@ import logging
 import time
 logging.basicConfig(level = logging.INFO,format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-DC = BPMPresetBeater(bpm=120)
+DC = OnlineBeater()
 DC.start()
 while True:
     start,dur,fea = DC.next()

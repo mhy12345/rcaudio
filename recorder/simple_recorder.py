@@ -6,7 +6,7 @@ import queue
 import time
 
 class SimpleRecorder(threading.Thread):
-    def __init__(self,time = None,sr = 20000,batch_num  = 200,frames_per_buffer = 200):
+    def __init__(self,time = None,sr = 20000,batch_num  = 600,frames_per_buffer = 600):
         threading.Thread.__init__(self)
         self.time = time
         self.sr = sr

@@ -2,7 +2,7 @@
 
 ## Introduction 
 
-**rcaudio** Rcaudio is a real-time audio analysis library that allows you to simply record audio through a microphone and analyze.
+**rcaudio** is a real-time audio analysis library that allows you to simply record audio through a microphone and analyze.
 
 It supports real-time analysis of :
 

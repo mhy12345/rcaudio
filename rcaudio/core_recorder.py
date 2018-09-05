@@ -25,9 +25,9 @@ class CoreRecorder(threading.Thread):
         self.__running.set()
 
     def run(self):
-        self.logger.info("Start to recording...")
-        self.logger.info("  Time = %s"%self.time)
-        self.logger.info("  Sample Rate = %s"%self.sr)
+        self.logger.debug("Start to recording...")
+        self.logger.debug("  Time = %s"%self.time)
+        self.logger.debug("  Sample Rate = %s"%self.sr)
         self.start_time = time.time()
         pa=PyAudio()
         stream=pa.open(format = paInt16,channels=1, rate=self.sr,input=True, frames_per_buffer=self.frames_per_buffer)

@@ -5,7 +5,7 @@ import numpy as np
 import librosa
 import bisect
 import math
-from base_analyzer import BaseAnalyzer
+from .base_analyzer import BaseAnalyzer
 
 class BeatAnalyzer(BaseAnalyzer):
     def __init__(self,
@@ -41,7 +41,6 @@ class BeatAnalyzer(BaseAnalyzer):
             data = np.array(self.audio_data[start_samples:]).astype(np.float32)
             start_time = start_samples / self.sr
             tmpo, _beat_frames = librosa.beat.beat_track(y=data,sr = self.sr)
-            #beat_frames = _beat_frames + int(start_samples / 512)
             beat_times = librosa.frames_to_time(_beat_frames) + start_time + self.start_time
 
             if len(beat_times) < 5:

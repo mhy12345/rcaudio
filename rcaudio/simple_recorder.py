@@ -1,4 +1,4 @@
-from core_recorder import CoreRecorder
+from .core_recorder import CoreRecorder
 import threading
 import logging
 import time

@@ -1,13 +1,10 @@
-from core_recorder import CoreRecorder
-from simple_recorder import SimpleRecorder
-from volume_analyzer import VolumeAnalyzer
-from beat_analyzer import BeatAnalyzer
+from rcaudio import *
 import time
 import logging
 
 
 logging.basicConfig(level=logging.DEBUG,
-                format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s')
+        format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s')
 
 
 def demo1():

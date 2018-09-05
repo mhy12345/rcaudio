@@ -2,7 +2,7 @@ import threading
 import logging
 import time
 import queue
-from base_analyzer import BaseAnalyzer
+from .base_analyzer import BaseAnalyzer
 
 class VolumeAnalyzer(BaseAnalyzer):
     def __init__(self,

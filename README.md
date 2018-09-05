@@ -9,6 +9,7 @@ It supports real-time analysis of :
 * The raw audio data
 * Volume
 * Beat Information
+* DIY method extraction function
 
 For chinese documentation : [中文文档](http://mhy12345.xyz/technology/rcaudio-documentation/)
 ## Installation
@@ -88,6 +89,6 @@ while True:
 	time.sleep(.01)
 ```
 
-## Some note
+## Some notes
 
 Most function has the time delay about 1-2 seconds. I did lot effort to let the BeatAnalyzer looked as it is real-time. However, for the `FeatureAnalyzer`, if the feature extraction function are too slow compare to the microphone recording, the dalay may become huge. Decrease the sample rates would be a solution, but better solution would be DIY a analyzer yourself.

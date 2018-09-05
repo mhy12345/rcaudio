@@ -79,11 +79,8 @@ class BeatAnalyzer(BaseAnalyzer):
             self.current_k = self.current_k + (self.expected_k - self.current_k)*(1-self.smooth_ratio)
         if self.current_k < self.initial_k*.45:
             self.current_k *= 2
-            print("INC")
         if self.current_k > self.initial_k * 2.1:
             self.current_k /= 2
-            print("DEC")
-        print(">>>",self.current_k,self.expected_k)
         while time.time() < pred:
             time.sleep(.01)
         return self.beat_count

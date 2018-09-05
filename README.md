@@ -1,5 +1,4 @@
-# rcaudio : A Realtime Audio Recording & Analyze Script
-
+# rcaudio : A Realtime Audio Recording & Analyzing Library
 
 ## Introduction 
 
@@ -11,7 +10,12 @@ It supports real-time analysis of :
 * Volume
 * Beat Information
 
-For chinese documentation : [中文文档](http://mhy12345.xyz/technology/python-beat-detection/)
+For chinese documentation : [中文文档](http://mhy12345.xyz/technology/rcaudio-documentation/)
+## Installation
+
+```bash
+pip install rcaudio
+```
 
 ## Usage
 
@@ -46,6 +50,9 @@ All class extended from `BaseAnalyzer` can be registered into `SimpleRecorder`. 
 
 
 ```python
+import time
+from rcaudio import SimpleRecorder,VolumeAnalyzer
+
 SR = SimpleRecorder()
 VA = VolumeAnalyzer(rec_time = 1)
 SR.register(VA)
@@ -66,3 +73,21 @@ while True:
     print(BA.block_until_next_beat())
 ```
 
+A FeatureAnalyzer can use to generate all user defined acoustic features. Just override the `data_process` function. (Current function are the calculation of the *Zero Crossing Rate*.
+
+```python
+SR = SimpleRecorder(sr = 1000)
+FA = FeatureAnalyzer(refresh_time = 1)
+SR.register(FA)
+SR.start()
+cpos = 0
+while True:
+	if len(FA.result) > cpos:
+		print(FA.result[cpos])
+		cpos += 1
+	time.sleep(.01)
+```
+
+## Some note
+
+Most function has the time delay about 1-2 seconds. I did lot effort to let the BeatAnalyzer looked as it is real-time. However, for the `FeatureAnalyzer`, if the feature extraction function are too slow compare to the microphone recording, the dalay may become huge. Decrease the sample rates would be a solution, but better solution would be DIY a analyzer yourself.

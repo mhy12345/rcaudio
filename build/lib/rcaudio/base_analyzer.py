@@ -12,11 +12,14 @@ class BaseAnalyzer(threading.Thread):
         self.logger = logging.getLogger(str(self.__class__))
 
     def stop(self):
-        logger.warn("Stop signal received")
+        self.logger.debug("Stop signal received")
         self.running.clear() 
         
     def register_recorder(self,recorder):
         self.audio_data = recorder.audio_data
         self.sr = recorder.sr
         self.recorder = recorder
+
+    def is_running(self):
+        return self.running.isSet()
 

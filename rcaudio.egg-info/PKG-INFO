@@ -1,13 +1,12 @@
 Metadata-Version: 2.1
 Name: rcaudio
-Version: 0.0.1
-Summary: A realtime audio recording scripts
+Version: 0.0.2
+Summary: A real-time audio recording & analyzing library
 Home-page: https://github.com/mhy12345/rcaudio
 Author: mhy12345
 Author-email: maohanyang789@163.com
 License: UNKNOWN
-Description: # rcaudio : A Realtime Audio Recording & Analyze Script
-        
+Description: # rcaudio : A Realtime Audio Recording & Analyzing Library
         
         ## Introduction 
         
@@ -19,7 +18,12 @@ Description: # rcaudio : A Realtime Audio Recording & Analyze Script
         * Volume
         * Beat Information
         
-        For chinese documentation : [中文文档](http://mhy12345.xyz/technology/python-beat-detection/)
+        For chinese documentation : [中文文档](http://mhy12345.xyz/technology/rcaudio-documentation/)
+        ## Installation
+        
+        ```bash
+        pip install rcaudio
+        ```
         
         ## Usage
         
@@ -54,6 +58,9 @@ Description: # rcaudio : A Realtime Audio Recording & Analyze Script
         
         
         ```python
+        import time
+        from rcaudio import SimpleRecorder,VolumeAnalyzer
+        
         SR = SimpleRecorder()
         VA = VolumeAnalyzer(rec_time = 1)
         SR.register(VA)
@@ -74,6 +81,24 @@ Description: # rcaudio : A Realtime Audio Recording & Analyze Script
             print(BA.block_until_next_beat())
         ```
         
+        A FeatureAnalyzer can use to generate all user defined acoustic features. Just override the `data_process` function. (Current function are the calculation of the *Zero Crossing Rate*.
+        
+        ```python
+        SR = SimpleRecorder(sr = 1000)
+        FA = FeatureAnalyzer(refresh_time = 1)
+        SR.register(FA)
+        SR.start()
+        cpos = 0
+        while True:
+        	if len(FA.result) > cpos:
+        		print(FA.result[cpos])
+        		cpos += 1
+        	time.sleep(.01)
+        ```
+        
+        ## Some note
+        
+        Most function has the time delay about 1-2 seconds. I did lot effort to let the BeatAnalyzer looked as it is real-time. However, for the `FeatureAnalyzer`, if the feature extraction function are too slow compare to the microphone recording, the dalay may become huge. Decrease the sample rates would be a solution, but better solution would be DIY a analyzer yourself.
         
 Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 3

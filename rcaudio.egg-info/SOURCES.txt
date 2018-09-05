@@ -4,6 +4,7 @@ rcaudio/__init__.py
 rcaudio/base_analyzer.py
 rcaudio/beat_analyzer.py
 rcaudio/core_recorder.py
+rcaudio/feature_analyzer.py
 rcaudio/simple_recorder.py
 rcaudio/volume_analyzer.py
 rcaudio.egg-info/PKG-INFO

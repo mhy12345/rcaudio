@@ -66,7 +66,6 @@ class BeatAnalyzer(BaseAnalyzer):
             exp_i = math.ceil((pred_v2 - self.expected_b)/self.expected_k)
             exp_v2 = exp_i * self.expected_k + self.expected_b
             exp_v1 = exp_v2 - self.expected_k
-            print(exp_v1,pred_v2,exp_v2)
             if (pred_v2-exp_v1) < (exp_v2-pred_v2):
                 pred = pred_v2 + (exp_v1-pred_v2)*(1-self.smooth_ratio)
                 self.beat_count += pred_i 

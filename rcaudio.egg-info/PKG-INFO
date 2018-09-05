@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: rcaudio
+Version: 0.0.1
+Summary: A realtime audio recording scripts
+Home-page: https://github.com/mhy12345/rcaudio
+Author: mhy12345
+Author-email: maohanyang789@163.com
+License: UNKNOWN
+Description: # rcaudio : A Realtime Audio Recording & Analyze Script
+        
+        ## Introduction 
+        
+        rcaudio is a realtime audio recording script, it provide easy way to record via microphone and then analyze.
+        
+        rcaudio provide APIs to get:
+        
+        * The raw audio data
+        * Volume
+        * Beat Information
+        
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown

@@ -5,15 +5,20 @@ import numpy as np
 import queue
 import time
 
-class SimpleRecorder(threading.Thread):
-    def __init__(self,time = None,sr = 20000,batch_num  = 600,frames_per_buffer = 600):
+class CoreRecorder(threading.Thread):
+    def __init__(self,
+            time = None, #How much time to the end
+            sr = 20000, #Sample rate
+            batch_num  = 600, #Batch size (how much data for a single fetch)
+            frames_per_buffer = 600 
+            ):
         threading.Thread.__init__(self)
         self.time = time
         self.sr = sr
         self.batch_num = batch_num
         self.data_alter = threading.Lock()
         self.frames_per_buffer = frames_per_buffer
-        self.logger = logging.getLogger(__name__ + '.AudioRecorder')
+        self.logger = logging.getLogger(__name__ + '.CoreRecorder')
         self.buffer = queue.Queue()
         self.start_time = None
         self.__running = threading.Event()

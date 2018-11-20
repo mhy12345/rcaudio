@@ -67,4 +67,4 @@ def demo5():
             cpos += 1
         time.sleep(.01)
 
-demo5()
+demo2()

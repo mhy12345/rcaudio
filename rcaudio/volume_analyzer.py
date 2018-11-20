@@ -19,7 +19,7 @@ class VolumeAnalyzer(BaseAnalyzer):
         self.rec_size = self.sr * self.rec_time
 
     def run(self):
-        while self.start_time is None:
+        while self.recorder.start_time is None:
             time.sleep(1)
         while self.running.isSet():
             while len(self.audio_data) > self.cpos:
